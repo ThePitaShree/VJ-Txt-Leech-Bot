@@ -33,7 +33,7 @@ bot = Client(
     bot_token=BOT_TOKEN)
 
     # Define the image URL or path (you can use a URL or local file path)
-    image_url = "https://envs.sh/pfs.jpg"  # Replace with your image URL
+    image_url = "https://envs.sh/paG.jpg"  # Replace with your image URL
 
 
 @bot.on_message(filters.command(["start"]))
@@ -117,7 +117,7 @@ async def upload(bot: Client, m: Message):
     else:
         MR = raw_text3
    
-    await editable.edit("Now send the Thumb url/nEg » https://envs.sh/pfs.jpg \n Or if don't want thumbnail send = no")
+    await editable.edit("Now send the Thumb url/nEg » https://envs.sh/paG.jpg \n Or if don't want thumbnail send = no")
     input6 = message = await bot.listen(editable.chat.id)
     raw_text6 = input6.text
     await input6.delete(True)
