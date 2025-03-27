@@ -32,6 +32,7 @@ bot = Client(
     api_hash=API_HASH,
     bot_token=BOT_TOKEN)
 
+PICS = (environ.get('PICS', 'https://envs.sh/pgG.jpg'))
 
 @bot.on_message(filters.command(["start"]))
 async def start(bot: Client, m: Message):
