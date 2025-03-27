@@ -38,12 +38,22 @@ bot = Client(
 
 @bot.on_message(filters.command(["start"]))
 async def start(bot: Client, m: Message):
-    await m.reply_text(f"<blockquote><b>Hello {m.from_user.mention} 😎\n\nI Am A Bot For Download Links From Your **.TXT** File And Then Upload That File On Telegram So Basically If You Want To Use Me First Send Me /upload Command And Then Follow Few Steps..\n\nUse /stop to stop any ongoing task \n\n <blockquote>Developer : @EL_Pita_Shree 🗿</b></blockquote>")
-
+    # Send a photo along with the message
+    await bot.send_photo(
+        m.chat.id,  # Send to the same chat where the command was issued
+        "https://i.ibb.co/DHndQCC4/file-879.jpg",  # Replace this with your image path or URL
+        caption=f"<blockquote><b>Hello {m.from_user.mention} 😎\n\nI Am A Bot For Download Links From Your .TXT File And Then Upload That File On Telegram So Basically If You Want To Use Me First Send Me /upload Command And Then Follow Few Steps..\n\nUse /stop to stop any ongoing task \n\n <blockquote>Developer : @EL_Pita_Shree 🗿</b></blockquote>"
+    )
 
 @bot.on_message(filters.command("stop"))
-async def restart_handler(_, m):
-    await m.reply_text("**Stopped**🚦", True)
+async def stop_handler(_, m):
+    # Send a photo along with the stop message
+    await bot.send_photo(
+        m.chat.id,  # Send to the same chat where the command was issued
+        "path_to_stop_image.jpg",  # Replace this with your stop image path or URL
+        caption="Stopped🚦"
+    )
+    # Restart the bot after sending the stop message
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
