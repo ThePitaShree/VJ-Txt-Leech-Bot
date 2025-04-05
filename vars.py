@@ -7,3 +7,6 @@ from os import environ
 API_ID = int(environ.get("API_ID", "22528432"))
 API_HASH = environ.get("API_HASH", "fd5b960b10940c625c1a65e18c9518a6")
 BOT_TOKEN = environ.get("BOT_TOKEN", "")
+
+# Force subscription channel URL
+FORCE_SUB_CHANNEL = os.environ.get("FORCE_SUB_CHANNEL", "https://t.me/Interworld_backup")
