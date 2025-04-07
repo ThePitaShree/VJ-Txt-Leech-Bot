@@ -38,10 +38,6 @@ bot = Client(
 
 @bot.on_message(filters.command(["start"]))
 async def start(bot: Client, m: Message):
-    # Send a photo along with the message
-    await bot.send_photo(
-        m.chat.id,  # Send to the same chat where the command was issued
-        "https://i.ibb.co/DHndQCC4/file-879.jpg",  # Replace this with your image path or URL
         caption=f"<blockquote><b>Hello {m.from_user.mention} 😎\n\nI Am A Bot For Download Links From Your .TXT File And Then Upload That File On Telegram So Basically If You Want To Use Me First Send Me /upload Command And Then Follow Few Steps..\n\nUse /stop to stop any ongoing task \n\n <blockquote>Developer : @EL_Pita_Shree 🗿</b></blockquote>"
     )
 
