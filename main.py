@@ -31,16 +31,35 @@ bot = Client(
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN)
-@bot.on_message(filters.command("start"))
-async def start(client, message: Message):
-    await message.reply_photo(
-        photo="https://i.ibb.co/MDpVXD9z/file-1148.jpg")
-        
 @bot.on_message(filters.command(["start"]))
-async def start(bot: Client, m: Message):
-    await m.reply_text(f"<b>Hello {m.from_user.mention} 😎\n\nI Am A Bot For Download Links From Your .TXT File And Then Upload That File On Telegram So Basically If You Want To Use Me First Send Me /upload Command And Then Follow Few Steps..\n\nUse /stop to stop any ongoing task \n\n <blockquote>Developer : @EL_Pita_Shree 🗿</b></blockquote>"
-    )
+async def send_start(client: Client, message: Message):
+    if not await db.is_user_exist(message.from_user.id):
+        await db.add_user(message.from_user.id, message.from_user.first_name)
 
+    # Define the buttons for inline keyboard
+    buttons = [[
+        InlineKeyboardButton("❣️ Developer", url = "https://t.me/EL_Pita_Shree")
+    ],[
+        InlineKeyboardButton('🔍 sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ', url='https://t.me/kitabhai'),
+        InlineKeyboardButton('🤖 ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ', url='https://t.me/Interworld_backup')
+    ]]
+
+    # Define the inline keyboard markup
+    reply_markup = InlineKeyboardMarkup(buttons)
+
+    # Define the image URL or path (you can use a URL or local file path)
+    image_url = "https://i.ibb.co/MDpVXD9z/file-1148.jpg"  # Replace with your image URL
+
+    # Send a photo along with the message
+    await client.send_photo(
+        chat_id=message.chat.id, 
+        photo=image_url,  # Image URL or local file path
+        caption=f"<b>Hello {m.from_user.mention} 😎\n\nI Am A Bot For Download Links From Your .TXT File And Then Upload That File On Telegram So Basically If You Want To Use Me First Send Me /upload Command And Then Follow Few Steps..\n\nUse /stop to stop any ongoing task \n\n <blockquote>Developer : @EL_Pita_Shree 🗿</b></blockquote>", 
+        reply_markup=reply_markup, 
+        reply_to_message_id=message.id
+    )
+    return
+   
 @bot.on_message(filters.command("stop"))
 async def stop_handler(_, m):
     # Send a photo along with the stop message
