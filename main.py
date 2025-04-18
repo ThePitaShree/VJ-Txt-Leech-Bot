@@ -31,6 +31,11 @@ bot = Client(
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN)
+@bot.on_message(filters.command("start"))
+async def start(client, message: Message):
+    await message.reply_photo(
+        photo="https://i.ibb.co/MDpVXD9z/file-1148.jpg")
+        
 @bot.on_message(filters.command(["start"]))
 async def start(bot: Client, m: Message):
     await m.reply_text(f"<b>Hello {m.from_user.mention} 😎\n\nI Am A Bot For Download Links From Your .TXT File And Then Upload That File On Telegram So Basically If You Want To Use Me First Send Me /upload Command And Then Follow Few Steps..\n\nUse /stop to stop any ongoing task \n\n <blockquote>Developer : @EL_Pita_Shree 🗿</b></blockquote>"
