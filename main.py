@@ -31,44 +31,16 @@ bot = Client(
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN)
+
+
 @bot.on_message(filters.command(["start"]))
-async def send_start(client: Client, message: Message):
-    if not await db.is_user_exist(message.from_user.id):
-        await db.add_user(message.from_user.id, message.from_user.first_name)
+async def start(bot: Client, m: Message):
+    await m.reply_text(f"<b>Hello {m.from_user.mention} 👋\n\n I Am A Bot For Download Links From Your **.TXT** File And Then Upload That File On Telegram So Basically If You Want To Use Me First Send Me /upload Command And Then Follow Few Steps..\nUse /stop to stop any ongoing task./n 𝐃ᴇᴠᴇʟᴏᴘᴇʀ ☠️: @EL_Pita_Shree</b>")
 
-    # Define the buttons for inline keyboard
-    buttons = [[
-        InlineKeyboardButton("❣️ Developer", url = "https://t.me/EL_Pita_Shree")
-    ],[
-        InlineKeyboardButton('🔍 sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ', url='https://t.me/kitabhai'),
-        InlineKeyboardButton('🤖 ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ', url='https://t.me/Interworld_backup')
-    ]]
 
-    # Define the inline keyboard markup
-    reply_markup = InlineKeyboardMarkup(buttons)
-
-    # Define the image URL or path (you can use a URL or local file path)
-    image_url = "https://i.ibb.co/MDpVXD9z/file-1148.jpg"  # Replace with your image URL
-
-    # Send a photo along with the message
-    await client.send_photo(
-        chat_id=message.chat.id, 
-        photo=image_url,  # Image URL or local file path
-        caption=f"<b>Hello {m.from_user.mention} 😎\n\nI Am A Bot For Download Links From Your .TXT File And Then Upload That File On Telegram So Basically If You Want To Use Me First Send Me /upload Command And Then Follow Few Steps..\n\nUse /stop to stop any ongoing task \n\n <blockquote>Developer : @EL_Pita_Shree 🗿</b></blockquote>", 
-        reply_markup=reply_markup, 
-        reply_to_message_id=message.id
-    )
-    return
-   
 @bot.on_message(filters.command("stop"))
-async def stop_handler(_, m):
-    # Send a photo along with the stop message
-    await bot.send_photo(
-        m.chat.id,  # Send to the same chat where the command was issued
-        "path_to_stop_image.jpg",  # Replace this with your stop image path or URL
-        caption="Stopped🚦"
-    )
-    # Restart the bot after sending the stop message
+async def restart_handler(_, m):
+    await m.reply_text("**Stopped**🚦", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
@@ -95,8 +67,8 @@ async def upload(bot: Client, m: Message):
            await m.reply_text("**Invalid file input.**")
            os.remove(x)
            return
-    
-   
+
+
     await editable.edit(f"**𝕋ᴏᴛᴀʟ ʟɪɴᴋ𝕤 ғᴏᴜɴᴅ ᴀʀᴇ🔗🔗** **{len(links)}**\n\n**𝕊ᴇɴᴅ 𝔽ʀᴏᴍ ᴡʜᴇʀᴇ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ɪɴɪᴛɪᴀʟ ɪ𝕤** **1**")
     input0: Message = await bot.listen(editable.chat.id)
     raw_text = input0.text
@@ -106,7 +78,7 @@ async def upload(bot: Client, m: Message):
     input1: Message = await bot.listen(editable.chat.id)
     raw_text0 = input1.text
     await input1.delete(True)
-    
+
 
     await editable.edit("**𝔼ɴᴛᴇʀ ʀᴇ𝕤ᴏʟᴜᴛɪᴏɴ📸**\n144,240,360,480,720,1080 please choose quality")
     input2: Message = await bot.listen(editable.chat.id)
@@ -129,8 +101,8 @@ async def upload(bot: Client, m: Message):
             res = "UN"
     except Exception:
             res = "UN"
-    
-    
+
+
 
     await editable.edit("Now Enter A Caption to add caption on your uploaded file")
     input3: Message = await bot.listen(editable.chat.id)
@@ -141,8 +113,8 @@ async def upload(bot: Client, m: Message):
         MR = highlighter 
     else:
         MR = raw_text3
-   
-    await editable.edit("Now send the Thumb url/nEg » https://i.ibb.co/DHndQCC4/file-879.jpg \n Or if don't want thumbnail send = no")
+
+    await editable.edit("Now send the Thumb url/nEg » https://i.ibb.co/MDpVXD9z/file-1148.jpg \n Or if don't want thumbnail send = no")
     input6 = message = await bot.listen(editable.chat.id)
     raw_text6 = input6.text
     await input6.delete(True)
@@ -193,7 +165,7 @@ async def upload(bot: Client, m: Message):
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
             try:  
-                
+
                 cc = f'**[📽️] Vid_ID:** {str(count).zfill(3)}.** {𝗻𝗮𝗺𝗲𝟭}{MR}.mkv\n**𝔹ᴀᴛᴄʜ** » **{raw_text0}**'
                 cc1 = f'**[📁] Pdf_ID:** {str(count).zfill(3)}. {𝗻𝗮𝗺𝗲𝟭}{MR}.pdf \n**𝔹ᴀᴛᴄʜ** » **{raw_text0}**'
                 if "drive" in url:
@@ -207,7 +179,7 @@ async def upload(bot: Client, m: Message):
                         await m.reply_text(str(e))
                         time.sleep(e.x)
                         continue
-                
+
                 elif ".pdf" in url:
                     try:
                         cmd = f'yt-dlp -o "{name}.pdf" "{url}"'
