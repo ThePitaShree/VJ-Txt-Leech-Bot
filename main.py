@@ -35,7 +35,30 @@ bot = Client(
 
 @bot.on_message(filters.command(["start"]))
 async def start(bot: Client, m: Message):
-    await m.reply_text(f"<b><blockquote>Hello {m.from_user.mention} 👋\n\n I Am A Bot For Download Links From Your **.TXT** File And Then Upload That File On Telegram So Basically If You Want To Use Me First Send Me /upload Command And Then Follow Few Steps..\nUse /stop to stop any ongoing task.\n𝐃ᴇᴠᴇʟᴏᴘᴇʀ ☠️: @EL_Pita_Shree</blockquote></b>")
+    buttons = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("📤 Upload Now", callback_data="upload_now"),
+                InlineKeyboardButton("👨‍💻 Developer", url="https://t.me/EL_Pita_Shree")
+            ]
+        ]
+    )
+    await bot.send_photo(
+        chat_id=m.chat.id,
+        photo="https://i.ibb.co/MDpVXD9z/file-1148.jpg",  # You can change this to a local image like "start.jpg"
+        caption=f"<b>Hello {m.from_user.mention} 👋\n\nI Am A Bot For Download Links From Your **.TXT** File And Then Upload That File On Telegram. Basically, If You Want To Use Me, First Send /upload Command And Then Follow A Few Steps..\nUse /stop to stop any ongoing task.</b>",
+        reply_markup=buttons
+    )
+
+@bot.on_callback_query()
+async def callback_query_handler(bot: Client, query):
+    if query.data == "upload_now":
+        await query.message.delete()
+        await upload(bot, query.message)
+
+Let me know if you want to make the buttons open links instead or change their labels.
+
+
 
 
 @bot.on_message(filters.command("stop"))
