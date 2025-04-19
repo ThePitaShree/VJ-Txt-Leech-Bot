@@ -56,10 +56,6 @@ async def callback_query_handler(bot: Client, query):
         await query.message.delete()
         await upload(bot, query.message)
 
-Let me know if you want to make the buttons open links instead or change their labels.
-
-
-
 
 @bot.on_message(filters.command("stop"))
 async def restart_handler(_, m):
