@@ -29,15 +29,15 @@ async def start(bot: Client, m: Message):
     buttons = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("📤 Upload Now", callback_data="upload_now"),
-                InlineKeyboardButton("👨‍💻 Developer", url="https://t.me/EL_Pita_Shree")
+                InlineKeyboardButton("📤 𝐔ᴘʟᴏᴀᴅ 𝐍ᴏᴡ", callback_data="upload_now"),
+                InlineKeyboardButton("𝐃ᴇᴠᴇʟᴏᴘᴇʀ ☠️", url="https://t.me/EL_Pita_Shree")
             ]
         ]
     )
     await bot.send_photo(
         chat_id=m.chat.id,
         photo="https://envs.sh/Lz_.jpg",
-        caption = f"""> <b>HELLO {m.from_user.mention}</b>
+        caption = f"""<b>HELLO {m.from_user.mention}</b>
 
 <b>PREMIUM BOT SERVICE</b>  
 Designed to <b>extract links</b> from your <code>.TXT</code> files  
@@ -45,12 +45,12 @@ and <b>upload them directly</b> to Telegram.
 
 ───────────────  
 <b>HOW TO USE</b>  
-1. Send <code>/upload</code>  
+1. Send /upload  
 2. Follow the steps  
 3. Task will complete automatically  
 ───────────────  
 
-<b>NOTE:</b> Use <code>/stop</code> anytime to cancel the process.
+<b>NOTE:</b> Use /stop anytime to cancel the process.
 """,
         reply_markup=buttons
     )
