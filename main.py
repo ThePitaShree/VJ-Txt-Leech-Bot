@@ -37,7 +37,23 @@ async def start(bot: Client, m: Message):
     await bot.send_photo(
         chat_id=m.chat.id,
         photo="https://envs.sh/Lz_.jpg",
-        caption=f"<blockquote>Hello {m.from_user.mention} 👋\n\nI Am A Bot For Download Links From Your .TXT File And Then Upload That File On Telegram. Basically, If You Want To Use Me, First Send /upload Command And Then Follow A Few Steps..\nUse /stop to stop any ongoing task.</blockquote>",
+        caption = f"""
+<blockquote><b>HELLO {m.from_user.mention}</b>
+
+<b>PREMIUM BOT SERVICE</b>  
+Designed to <b>extract links</b> from your <code>.TXT</code> files  
+and <b>upload them directly</b> to Telegram.
+
+───────────────  
+<b>HOW TO USE</b>  
+1. Send <code>/upload</code>  
+2. Follow the steps  
+3. Task will complete automatically  
+───────────────  
+
+<b>NOTE:</b> Use <code>/stop</code> anytime to cancel the process.
+</blockquote>
+""",
         reply_markup=buttons
     )
 
