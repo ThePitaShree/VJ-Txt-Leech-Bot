@@ -36,8 +36,8 @@ async def start(bot: Client, m: Message):
     )
     await bot.send_photo(
         chat_id=m.chat.id,
-        photo="https://i.ibb.co/MDpVXD9z/file-1148.jpg",
-        caption=f"<b><blockquote>Hello {m.from_user.mention} 👋\n\nI Am A Bot For Download Links From Your .TXT File And Then Upload That File On Telegram. Basically, If You Want To Use Me, First Send /upload Command And Then Follow A Few Steps..\nUse /stop to stop any ongoing task.</blockquote></b>",
+        photo="https://envs.sh/Lz_.jpg",
+        caption=f"<blockquote>Hello {m.from_user.mention} 👋\n\nI Am A Bot For Download Links From Your .TXT File And Then Upload That File On Telegram. Basically, If You Want To Use Me, First Send /upload Command And Then Follow A Few Steps..\nUse /stop to stop any ongoing task.</blockquote>",
         reply_markup=buttons
     )
 
@@ -108,7 +108,7 @@ async def upload(bot: Client, m: Message):
     await input3.delete(True)
     MR = f"️ ⁪⁬⁮⁮⁮" if raw_text3 == 'Robin' else raw_text3
 
-    await editable.edit("Now send the Thumb url/nEg » https://i.ibb.co/MDpVXD9z/file-1148.jpg \n Or if don't want thumbnail send = no")
+    await editable.edit("Now send the Thumb url/nEg » https://envs.sh/Lz_.jpg \n Or if don't want thumbnail send = no")
     input6: Message = await bot.listen(editable.chat.id)
     raw_text6 = input6.text
     await input6.delete(True)
