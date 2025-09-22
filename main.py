@@ -36,7 +36,8 @@ async def start(bot: Client, m: Message):
     )
     await bot.send_photo(
         chat_id=m.chat.id,
-        photo="https://envs.sh/Lz_.jpg",
+        photo="https://envs.sh/LyN.jpg
+",
         caption = f"""<b>HELLO {m.from_user.mention}</b>
 
 <b>PREMIUM BOT SERVICE</b>  
@@ -122,7 +123,8 @@ async def upload(bot: Client, m: Message):
     await input3.delete(True)
     MR = f"️ ⁪⁬⁮⁮⁮" if raw_text3 == 'Robin' else raw_text3
 
-    await editable.edit("Now send the Thumb url/nEg » https://envs.sh/Lz_.jpg \n Or if don't want thumbnail send = no")
+    await editable.edit("Now send the Thumb url/nEg » https://envs.sh/LyN.jpg
+ \n Or if don't want thumbnail send = no")
     input6: Message = await bot.listen(editable.chat.id)
     raw_text6 = input6.text
     await input6.delete(True)
