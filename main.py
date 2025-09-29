@@ -122,8 +122,11 @@ async def upload(bot: Client, m: Message):
     await input3.delete(True)
     MR = f"️ ⁪⁬⁮⁮⁮" if raw_text3 == 'Robin' else raw_text3
 
-    await editable.edit("Now send the Thumb url/nEg » https://envs.sh/LyN.jpg
- \n Or if don't want thumbnail send = no")
+    await editable.edit(
+    """Now send the Thumb url
+Eg » https://envs.sh/LyN.jpg
+Or if don't want thumbnail send = no"""
+)
     input6: Message = await bot.listen(editable.chat.id)
     raw_text6 = input6.text
     await input6.delete(True)
