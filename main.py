@@ -36,8 +36,7 @@ async def start(bot: Client, m: Message):
     )
     await bot.send_photo(
         chat_id=m.chat.id,
-        photo="https://envs.sh/LyN.jpg
-"),
+        photo="https://envs.sh/LyN.jpg",
         caption = f"""<b>HELLO {m.from_user.mention}</b>
 
 <b>PREMIUM BOT SERVICE</b>  
